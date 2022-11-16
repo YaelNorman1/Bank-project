@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from routers.transactions_route import transactions_route
+from routers import transactions_route
 
 
 app = FastAPI()
-app.include_router(transactions_route.router)
+app.include_router(transactions_route.route)
 
 origins = [
     "http://localhost.tiangolo.com",
