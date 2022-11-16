@@ -1,11 +1,11 @@
 sql_insert_transaction =  """
-                           INSERT IGNORE into transactions (amount,category_id,vendor) 
+                           INSERT IGNORE INTO transactions (amount,category_id,vendor) 
                            values (%s,%s,%s)
                            """
 
 sql_select_all_transactions =   """
                                 SELECT *
-                                From transactions
+                                FROM transactions
                                 """
                         
 sql_delete_transaction =    """
@@ -15,7 +15,7 @@ sql_delete_transaction =    """
 
 sql_breakdown_transaction =     """
                                 SELECT transactions.category , SUM(transactions.amount) AS amount
-                                From transactions
+                                FROM transactions
                                 GROUP BY transactions.category_id
                                 """
 

@@ -7,6 +7,8 @@ USE Bank_project;
 --     category_name VARCHAR(20) NOT NULL
 -- );
 
+DROP TABLE transactions
+
 -- CREATE TABLE transactions (
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     amount INT NOT NULL, 
@@ -20,3 +22,5 @@ USE Bank_project;
 -- );
 
 -- INSERT INTO transactions VALUES (null, 100, 2, "bob")
+
+-- INSERT INTO categories VALUES (2, "milk")

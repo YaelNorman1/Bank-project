@@ -1,26 +1,25 @@
 import pymysql
-from queries import * 
 
 
 class connection_db:
     def __init__(self):
         try:
-            connection = pymysql.connect(
+            self.connection = pymysql.connect(
                 host="localhost",
                 user="root",
                 password="",
-                db="poke_tracker",
+                db="bank_project",
                 charset="utf8",
                 cursorclass=pymysql.cursors.DictCursor
             )
         except TypeError as e:
             print("Error while connecting to MySQL", e)
-        finally:
-            if connection.is_connected():
-                cursor = connection.cursor()
-                cursor.close()
-                connection.close()
-                print("MySQL connection is closed")
+        # finally:
+        #     if connection.is_connected():
+        #         cursor = connection.cursor()
+        #         cursor.close()
+        #         connection.close()
+        #         print("MySQL connection is closed")
 
     def select_all_from_table(self, sql_query, params= None):
         try:
@@ -39,6 +38,7 @@ class connection_db:
         try:
             with self.connection.cursor() as cursor:
                 if params:
+                    print(params)
                     cursor.execute(sql_query, params)  
                 else:
                     cursor.execute(sql_query)
