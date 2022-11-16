@@ -13,7 +13,7 @@ export default function Transaction(props) {
                 {/* <Card.Title>Special title treatment</Card.Title> */}
                 <Card.Text>{props.transaction.amount}</Card.Text>
                 <Card.Text>{props.transaction.category}</Card.Text>
-                <DeleteTransaction transactionId={props.transaction.id}/>
+                <DeleteTransaction transactionId={props.transaction.id} renderTrensaction={props.renderTrensaction}/>
             </Card.Body>
         </Card>
       </Row>
