@@ -13,10 +13,9 @@ export default function Transaction(props) {
                 {/* <Card.Title>Special title treatment</Card.Title> */}
                 <Card.Text>{props.transaction.amount}</Card.Text>
                 <Card.Text>{props.transaction.category}</Card.Text>
-                <DeleteTransaction/>
+                <DeleteTransaction transactionId={props.transaction.id}/>
             </Card.Body>
         </Card>
-        
       </Row>
     )
   }
