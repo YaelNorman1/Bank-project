@@ -20,7 +20,7 @@ export default function Landing() {
 
     return (
       <div>
-        {transactions.map(element => {return (<Transaction transaction= {element}/>)})}
+        {transactions.map(element => {return (<Transaction transaction= {element} renderTrensaction= {getTransactions}/>)})}
       </div>
     )
 }

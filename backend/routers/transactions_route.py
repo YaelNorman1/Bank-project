@@ -14,5 +14,5 @@ def add_transaction(amount, category, vendor, response: Response):
     return db_connection.insert_to_table(queries.sql_insert_transaction, (amount,category, vendor))
 
 @route.delete("/transactions", status_code=status.HTTP_200_OK)
-def delete_transaction(transactions_id):
-    return db_connection.delete_from_table(queries.sql_delete_transaction, transactions_id)      
+def delete_transaction(id):
+    return db_connection.delete_from_table(queries.sql_delete_transaction, id)      
