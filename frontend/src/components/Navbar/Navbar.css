@@ -4,4 +4,14 @@
 
 .navbar{
     margin-bottom: 10px;
+
+}
+
+.remove-link-design{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.spaces{
+    margin: 5px;
 }
