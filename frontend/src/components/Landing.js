@@ -18,9 +18,22 @@ export default function Landing() {
         })
     }
 
+  //   const deleteTransaction = () => {
+  //     callDeleteServer();
+  //     props.renderTrensaction();
+  // }
+
+  const deleteTransaction= async(id) =>{
+      axios.delete(`http://localhost:8080/transactions?id=${id}`)
+      .then((response) =>{
+          console.log("trensaction deleted");
+          getTransactions();
+      })
+  }
+
     return (
       <div>
-        {transactions.map(element => {return (<Transaction transaction= {element} renderTrensaction= {getTransactions}/>)})}
+        {transactions.map(element => {return (<Transaction transaction= {element} deleteTransaction= {deleteTransaction}/>)})}
       </div>
     )
 }
