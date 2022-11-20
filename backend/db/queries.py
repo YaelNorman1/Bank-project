@@ -29,3 +29,19 @@ sql_select_balance_amount= """
                             SELECT amount
                             FROM balance
                             """
+
+sql_insert_balance= """
+                    INSERT INTO balance  
+                    VALUES (%s)
+                    """
+
+sql_update_balance= """
+                    UPDATE balance 
+                    SET amount= %s 
+                    WHERE amount = %s
+                    """
+
+sql_select_amount_transaction= """
+                                SELECT amount
+                                FROM transactions
+                                WHERE id = %s"""

@@ -39,10 +39,10 @@ class connection_db:
             with self.connection.cursor() as cursor:
                 if params:
                     print(params)
-                    cursor.execute(sql_query, params)  
+                    cursor.execute(sql_query, params) 
                 else:
                     cursor.execute(sql_query)
-                    self.connection.commit()
+                self.connection.commit()
             return {"Success" : "Added data successfuly"}
         except TypeError as e:
             print(e)
@@ -54,3 +54,16 @@ class connection_db:
                 self.connection.commit()
         except Exception:
             raise Exception({"Error":"transaction does not exist, sorry"})
+
+    def select_from_table(self, sql_query, params):
+        try:
+            with self.connection.cursor() as cursor:
+                if params:
+                    cursor.execute(sql_query, params)  
+                else:
+                    cursor.execute(sql_query)
+                result = cursor.fetchone()
+                print(f'selected {result} successfully')
+                return result
+        except TypeError as e:
+            print(e)

@@ -8,3 +8,10 @@ db_connection= connection_db()
 @route.get("/balance", status_code=status.HTTP_200_OK)
 def get_balance():
     return db_connection.select_all_from_table(queries.sql_select_balance_amount)
+
+@route.post("/balance", status_code=status.HTTP_200_OK)
+def update_balance(new_amount):
+    # print(new_amount)
+    old_amount= get_balance()[0]["amount"]
+    new_amount += old_amount
+    return db_connection.insert_to_table(queries.sql_update_balance, (new_amount, old_amount))
