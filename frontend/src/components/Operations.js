@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import ApiCall from '../apiModel/apiEndPoints'
-import axios from 'axios';
+// import axios from 'axios';
 
 const api= new ApiCall();
 
@@ -21,14 +21,14 @@ export default function Operations(props) {
     
     const saveTransaction= (event) => {
         const newTransaction = {
-            amount: event.target.name==="withdraw"? -(inputs.amount) : inputs.amount,
+            amount: event.target.name === "withdraw"? -(inputs.amount) : inputs.amount,
             category: inputs.category,
             vendor: inputs.vendor
         };
-        // axios.post('http://localhost:8080/transactions',newTransaction)
         api.callPostTransaction(newTransaction)
         .then((res)=>{
-            setInputs({amount:0,vendor:"",category:""})
+            setInputs({amount:0,vendor:"",category:""});
+            props.updateBalance();
         })
         .catch((error) => {
             console.log(error)
@@ -51,8 +51,8 @@ export default function Operations(props) {
                     <Form.Label>Transaction Category</Form.Label>
                     <Form.Control as="textarea" name="category" placeholder="Type Category" value={inputs.category} onChange={handleInput}/>
                 </Form.Group>
-                <Button type="submit" variant="success" name="deposit" onClick={saveTransaction}>Deposit</Button>
-                <Button type="submit" variant="danger" name="withdraw" onClick={saveTransaction}>Withdraw</Button>
+                <Button variant="success" name="deposit" onClick={saveTransaction}>Deposit</Button>
+                <Button variant="danger" name="withdraw" onClick={saveTransaction}>Withdraw</Button>
             </Form>
         </Container>
 

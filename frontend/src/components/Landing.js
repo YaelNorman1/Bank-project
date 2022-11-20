@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import Transaction from "./Transaction"
-import axios from 'axios'
+// import axios from 'axios'
 import ApiCall from '../apiModel/apiEndPoints'
 
 const api= new ApiCall();
 
-export default function Landing() {
+export default function Landing(props) {
 
     const [transactions, setTransactions]= useState([])
 
@@ -14,7 +14,6 @@ export default function Landing() {
     }, []);
 
     const getTransactions= async() =>{
-      // axios.get('http://localhost:8080/transactions')
         api.callgetTransactions()
         .then((response) =>{
             setTransactions(response.data)
@@ -22,7 +21,6 @@ export default function Landing() {
     }
 
   const deleteTransaction= async(id) =>{
-      // axios.delete(`http://localhost:8080/transactions?id=${id}`)
       api.callDeleteTransaction(id)
       .then((response) =>{
           console.log("trensaction deleted");
@@ -32,7 +30,7 @@ export default function Landing() {
 
     return (
       <div>
-        {transactions.map(element => {return (<Transaction transaction= {element} deleteTransaction= {deleteTransaction}/>)})}
+        {transactions.map(element => {return (<Transaction transaction= {element} deleteTransaction= {deleteTransaction} updateBalance={props.updateBalance}/>)})}
       </div>
     )
 }

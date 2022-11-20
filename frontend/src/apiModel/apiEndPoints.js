@@ -14,4 +14,8 @@ export default class ApiCall{
         return axios.post('http://localhost:8080/transactions',newTransaction)
     }
 
+    callGetBalance= () => {
+        return axios.get(`http://localhost:8080/balance`)
+    }
+
 }

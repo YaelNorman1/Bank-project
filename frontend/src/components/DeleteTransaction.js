@@ -1,10 +1,10 @@
-import axios from "axios";
 import { Button } from "react-bootstrap";
 
 export default function DeleteTransaction(props) {
 
     const deleteTransaction = () => {
         props.deleteTransaction(props.transactionId);
+        props.updateBalance();
     }
 
     return (
