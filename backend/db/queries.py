@@ -29,3 +29,8 @@ sql_select_balance_amount= """
                             SELECT amount
                             FROM balance
                             """
+
+sql_insert_balance= """
+                    INSERT IGNORE INTO balance  
+                    values %s
+                    """
