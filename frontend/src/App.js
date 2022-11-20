@@ -1,10 +1,10 @@
 import './App.css';
-import React, { Component, useState }  from "react";
+import React, { useState }  from "react";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import Landing from './components/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Operations from './components/Operations';
+import Operations from './components/Operations/Operations';
 import ApiCall from '../src/apiModel/apiEndPoints'
 import BreakDown from './components/BreakDown';
 

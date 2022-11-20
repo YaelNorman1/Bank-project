@@ -4,8 +4,7 @@ import Money from "./Money/Money"
 
 
 export default function Transaction(props) {
-    
-    
+
     return (
       <Row>
         <Card>

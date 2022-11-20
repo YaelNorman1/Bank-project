@@ -15,3 +15,8 @@
 .spaces{
     margin: 5px;
 }
+
+.link {
+    text-decoration: none;
+    margin-right: 10px;
+}
