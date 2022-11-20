@@ -18,4 +18,8 @@ export default class ApiCall{
         return axios.get(`http://localhost:8080/balance`)
     }
 
+    callBreakdownCategories= () => {
+        return axios.get('http://localhost:8080/breakdown')
+    }
+
 }

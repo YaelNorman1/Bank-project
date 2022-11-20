@@ -14,16 +14,11 @@ sql_delete_transaction =    """
                             """
 
 sql_breakdown_transaction =     """
-                                SELECT transactions.category , SUM(transactions.amount) AS amount
+                                SELECT category , 
+                                SUM(amount) AS amount
                                 FROM transactions
-                                GROUP BY transactions.category
+                                GROUP BY category;
                                 """
-
-sql_select_category_name =  """
-                            SELECT category_name
-                            FROM categories
-                            WHERE id = %s
-                            """
 
 sql_select_balance_amount= """
                             SELECT amount

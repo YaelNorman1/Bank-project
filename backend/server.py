@@ -1,13 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from routers import transactions_route
-from routers import balance_route
+from routers import transactions_route, balance_route, breakdown_route
+# from routers import balance_route
 
 
 app = FastAPI()
 app.include_router(transactions_route.route)
 app.include_router(balance_route.route)
+app.include_router(breakdown_route.route)
 
 
 origins = [

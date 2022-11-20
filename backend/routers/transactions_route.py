@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, Response,Request
-from db.connection import connection_db
+from db.connection_db import connection_db
 from db import queries
 from routers.balance_route import get_balance, update_balance
 
@@ -20,6 +20,5 @@ async def add_transaction(request:Request):
 @route.delete("/transactions", status_code=status.HTTP_200_OK)
 def delete_transaction(id):
     amount_to_delete= db_connection.select_from_table(queries.sql_select_amount_transaction, id)
-    # print(amount_to_delete)
     update_balance(-int(amount_to_delete["amount"]))
     return db_connection.delete_from_table(queries.sql_delete_transaction, id)      

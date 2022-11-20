@@ -23,7 +23,18 @@ class connection_db:
 
     def select_all_from_table(self, sql_query, params= None):
         try:
-            with self.connection.cursor() as cursor:
+            connection = pymysql.connect(
+                host="localhost",
+                user="root",
+                password="",
+                db="bank_project",
+                charset="utf8",
+                cursorclass=pymysql.cursors.DictCursor
+            )
+        except TypeError as e:
+            print("Error while connecting to MySQL", e)
+        try:
+            with connection.cursor() as cursor:
                 if params:
                     cursor.execute(sql_query, params)  
                 else:
