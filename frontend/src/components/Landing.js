@@ -21,7 +21,7 @@ export default function Landing(props) {
     }
 
   const deleteTransaction= async(id) =>{
-      api.callDeleteTransaction(id)
+      await api.callDeleteTransaction(id)
       .then((response) =>{
           console.log("trensaction deleted");
           getTransactions();

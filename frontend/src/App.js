@@ -16,6 +16,7 @@ function App() {
   const updateBalance= async() =>{
     api.callGetBalance()
     .then((response) =>{
+      console.log(response.data[0]["amount"]);
       setBalance(response.data[0]["amount"]);
     })
   }
