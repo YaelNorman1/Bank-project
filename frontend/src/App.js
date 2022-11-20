@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Operations from './components/Operations';
 import ApiCall from '../src/apiModel/apiEndPoints'
+import BreakDown from './components/BreakDown';
 
 const api= new ApiCall();
 
@@ -26,7 +27,6 @@ function App() {
           <Route exact path="/" render={() => <Landing updateBalance={updateBalance} />}/>
           <Route exact path="/operations" render={() => <Operations updateBalance={updateBalance}/>}/>
           <Route exact path="/breakdown" render={() => <BreakDown />}/>
-
         </div>
       </Router>
   );

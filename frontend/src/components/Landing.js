@@ -30,7 +30,7 @@ export default function Landing(props) {
 
     return (
       <div>
-        {transactions.map(element => {return (<Transaction transaction= {element} deleteTransaction= {deleteTransaction} updateBalance={props.updateBalance}/>)})}
+        {transactions.map((element, index) => {return (<Transaction key={index} transaction= {element} deleteTransaction= {deleteTransaction} updateBalance={props.updateBalance}/>)})}
       </div>
     )
 }

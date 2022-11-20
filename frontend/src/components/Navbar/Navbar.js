@@ -6,22 +6,16 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 import './Navbar.css'
 import Money from '../Money/Money';
-import ApiCall from '../../apiModel/apiEndPoints'
+// import ApiCall from '../../apiModel/apiEndPoints'
 
-const api= new ApiCall();
+// const api= new ApiCall();
 
 export default function Navbar(props) {
 
   useEffect(()=>{
+    console.log("hello")
     props.updateBalance();   
   }, []);
-
-  // const callGetBalanceServer= async() =>{
-  //   api.callGetBalance()
-  //   .then((response) =>{
-  //     props.setBalance(response.data[0]["amount"]);
-  //   })
-  // }
 
   return (
     <BootstrapNavbar bg="light" expand="lg" className='navbar'>
@@ -30,6 +24,7 @@ export default function Navbar(props) {
           <Nav className="me-auto">
             <Link to ="/" style={{textDecoration: 'none'}}>Home</Link>
             <Link to= "/operations" style={{textDecoration: 'none'}}>Operations</Link>
+            <Link to= "/breakdown" style={{textDecoration: 'none'}}>BreakDown</Link>
           </Nav>
             <h4 className="balance ms-auto mr-10">Balance:</h4>
             <Money amount= {props.balance}/>

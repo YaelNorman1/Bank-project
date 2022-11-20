@@ -1,8 +1,26 @@
+import { useEffect, useState } from "react"
+import { Container } from "react-bootstrap"
+import ApiCall from '../apiModel/apiEndPoints'
+
+const api= new ApiCall();
 
 export default function BreakDown() {
-    // const [categories]
+    const [categories, setCategories]= useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+          const response = await api.callBreakdownCategories();
+          setCategories(response.data)
+        }
+        fetchData();
+      }, []);
 
     return (
-        <Button variant="danger" onClick={deleteTransaction}>Delete</Button>
+        <Container>
+            {categories.map((category, index) => {
+                return(
+                <div key={index}>{category["category"]} : {category["amount"]}</div>)
+            })}
+        </Container>
     )
   }

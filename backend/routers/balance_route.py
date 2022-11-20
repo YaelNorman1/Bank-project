@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, Response
-from db.connection import connection_db
+from db.connection_db import connection_db
 from db import queries
 
 route = APIRouter()
@@ -11,7 +11,6 @@ def get_balance():
 
 @route.post("/balance", status_code=status.HTTP_200_OK)
 def update_balance(new_amount):
-    # print(new_amount)
     old_amount= get_balance()[0]["amount"]
     new_amount += old_amount
     return db_connection.insert_to_table(queries.sql_update_balance, (new_amount, old_amount))
