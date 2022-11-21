@@ -66,7 +66,7 @@ class connection_db:
         except Exception:
             raise Exception({"Error":"transaction does not exist, sorry"})
 
-    def select_from_table(self, sql_query, params):
+    def select_from_table(self, sql_query, params= None):
         try:
             with self.connection.cursor() as cursor:
                 if params:

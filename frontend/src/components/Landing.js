@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import Transaction from "./Transaction"
-// import axios from 'axios'
+import Transaction from "./Transaction/Transaction"
 import ApiCall from '../apiModel/apiEndPoints'
 
 const api= new ApiCall();
@@ -21,11 +20,8 @@ export default function Landing(props) {
     }
 
   const deleteTransaction= async(id) =>{
-      await api.callDeleteTransaction(id)
-      .then((response) =>{
-          console.log("trensaction deleted");
-          getTransactions();
-      })
+      const response= await api.callDeleteTransaction(id)
+      getTransactions();
   }
 
     return (
