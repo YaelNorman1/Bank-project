@@ -13,7 +13,6 @@ const api= new ApiCall();
 function App() {
   const [balance, setBalance]= useState(0);
 
-<<<<<<< HEAD
   const updateBalance= () => {
     async function fetchData() {
       const response = await api.callGetBalance();
@@ -22,16 +21,6 @@ function App() {
     fetchData();
   };
          
-=======
-  const updateBalance= async() =>{
-    api.callGetBalance()
-    .then((response) =>{
-      console.log(response.data[0]["amount"]);
-      setBalance(response.data[0]["amount"]);
-    })
-  }
-
->>>>>>> 107682c465789c7bee76c802dc5ccf03d5a3b114
   return (
       <Router>
         <div className="App container">
