@@ -6,20 +6,21 @@ import Landing from './components/Landing';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Operations from './components/Operations/Operations';
 import ApiCall from '../src/apiModel/apiEndPoints'
-import BreakDown from './components/BreakDown';
+import BreakDown from './components/BreakDown/BreakDown';
 
 const api= new ApiCall();
 
 function App() {
   const [balance, setBalance]= useState(0);
 
-  const updateBalance= async() =>{
-    api.callGetBalance()
-    .then((response) =>{
-      setBalance(response.data[0]["amount"]);
-    })
-  }
-
+  const updateBalance= () => {
+    async function fetchData() {
+      const response = await api.callGetBalance();
+      setBalance(response.data["amount"]);
+    }
+    fetchData();
+  };
+         
   return (
       <Router>
         <div className="App container">

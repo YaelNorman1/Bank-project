@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { Card, Container, Row } from "react-bootstrap"
-import ApiCall from '../apiModel/apiEndPoints'
+import ApiCall from '../../apiModel/apiEndPoints'
+import '../BreakDown/BreakDown.css'
+
 
 const api= new ApiCall();
 
@@ -20,7 +22,7 @@ export default function BreakDown() {
             {categories.map((category, index) => {
                 return(
                   <Row>
-                    <Card key={index}>
+                    <Card key={index} className='card'>
                         <Card.Header>{category["category"]} : {category["amount"]}</Card.Header>
                     </Card>
                 </Row>
