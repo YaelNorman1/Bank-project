@@ -18,7 +18,6 @@ def update_balance(new_amount):
     try:
         old_amount= get_balance()["amount"]
         new_amount += old_amount
-        print("old amoumt: "+ str(old_amount) +" new amount: " +str(new_amount))
         return db_connection.insert_to_table(queries.sql_update_balance, (new_amount, old_amount))
     except mysql.MySQLError as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e)

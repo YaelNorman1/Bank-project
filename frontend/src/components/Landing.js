@@ -12,7 +12,7 @@ export default function Landing(props) {
       getTransactions();   
     }, []);
 
-    const getTransactions= async() =>{
+    const getTransactions= () =>{
         api.callgetTransactions()
         .then((response) =>{
             setTransactions(response.data)
