@@ -14,7 +14,7 @@ function App() {
   const [balance, setBalance]= useState(0);
 
   const updateBalance= () => {
-    async function fetchData() {
+     async function fetchData() {
       const response = await api.callGetBalance();
       setBalance(response.data["amount"]);
     }

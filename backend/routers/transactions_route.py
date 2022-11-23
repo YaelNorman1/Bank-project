@@ -26,14 +26,19 @@ async def add_transaction(request:Request):
 
 @route.delete("/transactions", status_code=status.HTTP_200_OK)
 def delete_transaction(id):
+    check_if_id_number(id)
     try:
         amount_to_delete= db_connection.select_from_table(queries.sql_select_amount_transaction, id)
         update_balance(-int(amount_to_delete["amount"]))
         return db_connection.delete_from_table(queries.sql_delete_transaction, id)   
     except mysql.MySQLError as e:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=e)
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e)
     except TypeError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=e)   
+
+
+def check_if_id_number(id):
+    if not type(id)== int:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="need to insert id as number")
